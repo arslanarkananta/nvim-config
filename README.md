@@ -64,40 +64,32 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
 + Faster navigation and key sequence escaping via [hop.nvim](https://github.com/phaazon/hop.nvim) and [better-escape.nvim](https://github.com/max397574/better-escape.nvim).
 + Code formatting via [neoformat](https://github.com/sbdchd/neoformat). 
 
-<hr style="margin: 40px 0;">
+#
 <p style="text-align: center;">To see more demonstrations, check <a href="https://github.com/arslanarkananta/nvim-config/issues/7">here</a></p>
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: center; text-align: center; margin-top: 40px;">
 
-<div style="text-align: center;">
-    <strong>Start screen with alpha-nvim</strong><br>
-    <img src="https://github.com/user-attachments/assets/e3746f2e-66ea-47ed-88b9-f353bf6c75d8" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Autocompletion using nvim-cmp</strong><br>
-    <img src="https://github.com/user-attachments/assets/692cafdd-9ed6-4950-bf2f-7f102f07896c" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Undotree, neo-tree.nvim, and vista.vim</strong><br>
-    <img src="https://github.com/user-attachments/assets/59bf7d68-946a-462d-a90b-54efc9389f51" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Folding using nvim-ufo</strong><br>
-    <img src="https://github.com/user-attachments/assets/8decbac4-3cfe-490f-bb75-82aea5028073" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>GUI notification using nvim-notify</strong><br>
-    <img src="https://github.com/user-attachments/assets/d1645fec-4e28-4cbd-ad77-8a4395d36d1c" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Wildmenu autocompletion using wilder.nvim</strong><br>
-    <img src="https://github.com/user-attachments/assets/ecf8d254-89ed-4254-8d53-4e2a4caa48f4" width="400">
-</div>
-
-</div>
-
-
+<table>
+    <tr>
+        <td align="center"><strong>Start screen with alpha-nvim</strong><br>
+            <img src="https://github.com/user-attachments/assets/e3746f2e-66ea-47ed-88b9-f353bf6c75d8" width="400">
+        </td>
+        <td align="center"><strong>Autocompletion using nvim-cmp</strong><br>
+            <img src="https://github.com/user-attachments/assets/692cafdd-9ed6-4950-bf2f-7f102f07896c" width="400">
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><strong>Undotree, neo-tree.nvim, and vista.vim</strong><br>
+            <img src="https://github.com/user-attachments/assets/59bf7d68-946a-462d-a90b-54efc9389f51" width="400">
+        </td>
+        <td align="center"><strong>Folding using nvim-ufo</strong><br>
+            <img src="https://github.com/user-attachments/assets/8decbac4-3cfe-490f-bb75-82aea5028073" width="400">
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><strong>GUI notification using nvim-notify</strong><br>
+            <img src="https://github.com/user-attachments/assets/d1645fec-4e28-4cbd-ad77-8a4395d36d1c" width="400">
+        </td>
+        <td align="center"><strong>Wildmenu autocompletion using wilder.nvim</strong><br>
+            <img src="https://github.com/user-attachments/assets/ecf8d254-89ed-4254-8d53-4e2a4caa48f4" width="400">
+        </td>
+    </tr>
+</table>
