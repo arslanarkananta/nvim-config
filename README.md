@@ -16,7 +16,7 @@
       <img src="https://img.shields.io/github/languages/top/arslanarkananta/nvim-config" alt="Top languages"/>
     </a>
 </p>
-This repo contains my Neovim configuration for Linux, MacOS, and Windows.
+This repo contains my Neovim configuration for Linux, MacOS, and Windows. It's designed to be fast, modular, and highly customizable. While it's built to work out of the box, it's also structured to encourage experimentation and personalization, so you can adapt it to your unique coding style.
 
 ## Screenshot
 
@@ -38,10 +38,10 @@ move $HOME\AppData\Local\nvim $HOME\AppData\Local\nvim-backup
 ### 2. Clone the repository
 ```shell
 # On Linux/MacOS
-git clone https://github.com/ttys3/nvim-config.git $HOME/.config/nvim
+git clone https://github.com/arslanarkananta/nvim-config.git $HOME/.config/nvim
 
 # On Windows
-git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
+git clone https://github.com/arslanarkananta/nvim-config.git $HOME\AppData\Local\nvim
 ```
 
 ## Features
