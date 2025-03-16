@@ -560,4 +560,123 @@ return require('lazy').setup({
       end, { remap = true })
     end
   },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      
+      local wk = require("which-key")
+      wk.setup({
+        plugins = {
+          marks = true,
+          registers = true,
+          spelling = {
+            enabled = false,
+          },
+          presets = {
+            operators = true,
+            motions = true,
+            text_objects = true,
+            windows = true,
+            nav = true,
+            z = true,
+            g = true,
+          },
+        },
+        win = {
+          border = "rounded",
+          padding = { 2, 2, 2, 2 },
+        },
+        layout = {
+          height = { min = 4, max = 25 },
+          width = { min = 20, max = 50 },
+          spacing = 3,
+          align = "center",
+        },
+        filter = function(keymap)
+          return true
+        end,
+        show_help = true,
+      })
+      
+      wk.add({
+        { "<leader>w", "<cmd>w<cr>", desc = "Save file" },
+        { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
+        { "<leader>wq", "<cmd>wq<cr>", desc = "Save and quit" },
+        { "<leader>z", "<cmd>undo<cr>", desc = "Undo" },
+        
+        { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle file explorer" },
+        
+        { "<leader>f", group = "Find" },
+        { "<leader>ff", function() require('telescope.builtin').find_files() end, desc = "Find files" },
+        { "<leader>fg", function() require('telescope.builtin').live_grep() end, desc = "Live grep" },
+        { "<leader>fb", function() require('telescope').extensions.file_browser.file_browser() end, desc = "File browser" },
+        { "<leader>fr", function() require('telescope.builtin').oldfiles() end, desc = "Recent files" },
+        
+        { "<leader>r", group = "LSP" },
+        { "<leader>rn", function() vim.lsp.buf.rename() end, desc = "Rename" },
+        { "<leader>c", group = "Code" },
+        { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code action" },
+        { "<leader>f", function() vim.lsp.buf.format { async = true } end, desc = "Format document" },
+        
+        { "<leader>g", group = "Git" },
+        { "<leader>gh", ":Gitsigns preview_hunk<CR>", desc = "Preview hunk" },
+        { "<leader>gn", ":Gitsigns next_hunk<CR>", desc = "Next hunk" },
+        { "<leader>gp", ":Gitsigns prev_hunk<CR>", desc = "Previous hunk" },
+        { "<leader>gs", ":Git<CR>", desc = "Git status" },
+        { "<leader>gc", ":Git commit<CR>", desc = "Git commit" },
+        { "<leader>gp", ":Git push<CR>", desc = "Git push" },
+        
+        { "<leader>u", function() vim.cmd.UndotreeToggle() end, desc = "Toggle Undotree" },
+        
+        { "<leader>v", ":Vista!!<CR>", desc = "Toggle Vista" },
+        
+        { "<leader>n", group = "Format" },
+        { "<leader>nf", ":Neoformat<CR>", desc = "Format with Neoformat" },
+        
+        { "<leader>h", group = "Hop" },
+        { "<leader>hw", function() require('hop').hint_words() end, desc = "Hop to word" },
+        { "<leader>hl", function() require('hop').hint_lines() end, desc = "Hop to line" },
+        { "<leader>hc", function() require('hop').hint_char1() end, desc = "Hop to character" },
+        { "<leader>hp", function() require('hop').hint_patterns() end, desc = "Hop to pattern" },
+      })
+      
+      wk.add({
+        { "<C-Tab>", ":BufferLineCycleNext<CR>", desc = "Next buffer" },
+        { "<C-S-Tab>", ":BufferLineCyclePrev<CR>", desc = "Previous buffer" },
+        { "<C-t>", ":", desc = "Command line" },
+        
+        { "gd", function() vim.lsp.buf.definition() end, desc = "Go to definition" },
+        { "gD", function() vim.lsp.buf.declaration() end, desc = "Go to declaration" },
+        { "K", function() vim.lsp.buf.hover() end, desc = "Show hover info" },
+        { "gi", function() vim.lsp.buf.implementation() end, desc = "Go to implementation" },
+        { "<C-k>", function() vim.lsp.buf.signature_help() end, desc = "Show signature help" },
+        
+        { "f", desc = "Hop forward to character (current line)" },
+        { "F", desc = "Hop backward to character (current line)" },
+        { "t", desc = "Hop forward to before character (current line)" },
+        { "T", desc = "Hop backward to after character (current line)" },
+        
+        { "zR", function() require('ufo').openAllFolds() end, desc = "Open all folds" },
+        { "zM", function() require('ufo').closeAllFolds() end, desc = "Close all folds" },
+        { "zr", function() require('ufo').openFoldsExceptKinds() end, desc = "Open folds except kinds" },
+        { "zm", function() require('ufo').closeFoldsWith() end, desc = "Close folds with" },
+        { "zK", desc = "Peek folded code" },
+      })
+  
+      wk.add({
+        mode = { "i" },
+        { "<C-k>", desc = "Select previous item" },
+        { "<C-j>", desc = "Select next item" },
+        { "<C-b>", desc = "Scroll docs up" },
+        { "<C-f>", desc = "Scroll docs down" },
+        { "<C-Space>", desc = "Complete" },
+        { "<C-e>", desc = "Abort" },
+        { "<CR>", desc = "Confirm selection" },
+      })
+    end
+  }
 })
