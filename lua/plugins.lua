@@ -41,6 +41,21 @@ return require('lazy').setup({
 
       vim.keymap.set('n', '<C-Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
       vim.keymap.set('n', '<C-S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+			vim.keymap.set('n', '<C-t>', ':', { noremap = true, silent = true })
+
+			vim.api.nvim_create_autocmd("User", {
+        pattern = "AlphaReady",
+        callback = function()
+          vim.opt.showtabline = 0
+				end
+      })
+
+      vim.api.nvim_create_autocmd("BufUnload", {
+        pattern = "<buffer>",
+        callback = function()
+          vim.opt.showtabline = 2
+        end
+      })
     end
   },
 
@@ -63,6 +78,7 @@ return require('lazy').setup({
           theme = 'auto',
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
+					disabled_filetypes = { 'alpha' },
         }
       }
     end
@@ -73,7 +89,7 @@ return require('lazy').setup({
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.header.val = {
-				"",
+				"", "", "", "", "",
 				"                                                                     ",
 				"       ████ ██████           █████      ██                     ",
 				"      ███████████             █████                             ",
@@ -82,8 +98,8 @@ return require('lazy').setup({
 				"    █████████ ██████████ █████████ █████ █████ ████ █████   ",
 				"  ███████████ ███    ███ █████████ █████ █████ ████ █████  ",
 				" ██████  █████████████████████ ████ █████ █████ ████ ██████ ",
-				"",
-      }
+				"", "", "", "", "",
+			}
 
       dashboard.section.buttons.val = {
         dashboard.button("r", "⌛  Recent files", ":Telescope oldfiles<CR>"),
@@ -411,17 +427,137 @@ return require('lazy').setup({
     end
   },
 
+	{
+    "rcarriga/nvim-notify",
+    config = function()
+      local notify = require("notify")
+      notify.setup({
+        background_colour = "#000000",
+        render = "default",
+				stages = "fade_in_slide_out",
+        timeout = 3000,
+      })
+
+			vim.notify = notify
+    end
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    ft = { "markdown" },
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end
+  },
+
   {
     'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
+    dependencies = {
+      'kevinhwang91/promise-async',
+      'luukvbaal/statuscol.nvim',
+    },
     config = function()
+      local builtin = require("statuscol.builtin")
+      require("statuscol").setup({
+        relculright = true,
+        segments = {
+          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+          { text = { "%s" }, click = "v:lua.ScSa" },
+          { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+        },
+      })
+
       require('ufo').setup({
-        provider_selector = function(_, _, _)
-          return {'treesitter', 'indent'}
+        provider_selector = function()
+          return { 'treesitter', 'indent' }
+        end,
+        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+          local newVirtText = {}
+          local suffix = (' 󰁂 %d lines'):format(endLnum - lnum)
+          local sufWidth = vim.fn.strdisplaywidth(suffix)
+          local targetWidth = width - sufWidth
+          local curWidth = 0
+          for _, chunk in ipairs(virtText) do
+            local chunkText = chunk[1]
+            local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+            if targetWidth > curWidth + chunkWidth then
+              table.insert(newVirtText, chunk)
+            else
+              chunkText = truncate(chunkText, targetWidth - curWidth)
+              local hlGroup = chunk[2]
+              table.insert(newVirtText, { chunkText, hlGroup })
+              chunkWidth = vim.fn.strdisplaywidth(chunkText)
+
+              if curWidth + chunkWidth < targetWidth then
+                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+              end
+              break
+            end
+            curWidth = curWidth + chunkWidth
+          end
+          table.insert(newVirtText, { suffix, 'MoreMsg' })
+          return newVirtText
         end
       })
+
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { noremap = true, silent = true })
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { noremap = true, silent = true })
+      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds, { noremap = true, silent = true })
+      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith, { noremap = true, silent = true })
+      vim.keymap.set('n', 'zK', function()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end, { desc = "Peek folded code", noremap = true, silent = true })
+    end
+  },
+
+  {
+    'phaazon/hop.nvim',
+    branch = 'v2',
+    config = function()
+      require('hop').setup({
+        keys = 'etovxqpdygfblzhckisuran',
+        jump_on_sole_occurrence = true,
+        case_insensitive = true,
+      })
+
+      local hop = require('hop')
+      local directions = require('hop.hint').HintDirection
+
+      vim.keymap.set('n', '<leader>hw', function()
+        hop.hint_words()
+      end, { desc = "Hop to word" })
+
+      vim.keymap.set('n', '<leader>hl', function()
+        hop.hint_lines()
+      end, { desc = "Hop to line" })
+
+      vim.keymap.set('n', '<leader>hc', function()
+        hop.hint_char1()
+      end, { desc = "Hop to character" })
+
+      vim.keymap.set('n', '<leader>hp', function()
+        hop.hint_patterns()
+      end, { desc = "Hop to pattern" })
+
+      vim.keymap.set('n', 'f', function()
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+      end, { remap = true })
+
+      vim.keymap.set('n', 'F', function()
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+      end, { remap = true })
+
+      vim.keymap.set('n', 't', function()
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+      end, { remap = true })
+
+      vim.keymap.set('n', 'T', function()
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+      end, { remap = true })
     end
   },
 })
