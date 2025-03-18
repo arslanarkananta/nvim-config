@@ -1,5 +1,5 @@
 return require('lazy').setup({
-  {
+  { -- Bufferline for tabs
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -39,10 +39,12 @@ return require('lazy').setup({
         },
       }
 
+      -- Bufferline keymaps
       vim.keymap.set('n', '<C-Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
       vim.keymap.set('n', '<C-S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-			vim.keymap.set('n', '<C-t>', ':', { noremap = true, silent = true })
+			vim.keymap.set('n', '<C-t>', ':tabnew<CR>', { noremap = true, silent = true })
 
+      -- Hide tabline when alpha is open
 			vim.api.nvim_create_autocmd("User", {
         pattern = "AlphaReady",
         callback = function()
@@ -50,6 +52,7 @@ return require('lazy').setup({
 				end
       })
 
+      -- Show tabline when alpha is closed
       vim.api.nvim_create_autocmd("BufUnload", {
         pattern = "<buffer>",
         callback = function()
@@ -59,7 +62,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Miasma for theme
     "xero/miasma.nvim",
     lazy = false,
     priority = 1000,
@@ -68,7 +71,7 @@ return require('lazy').setup({
     end,
   },
 
-  {
+  { -- Lualine for statusline
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
@@ -84,7 +87,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Alpha for startup screen
     'goolord/alpha-nvim',
     config = function()
       local dashboard = require("alpha.themes.dashboard")
@@ -126,7 +129,7 @@ return require('lazy').setup({
     end
   },
 
-	{
+	{ -- NeoTree for file explorer
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 	  dependencies = {
@@ -151,7 +154,7 @@ return require('lazy').setup({
 		end,
 	},
 
-  {
+  { -- Telescope for fuzzy finder
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -184,7 +187,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- LSP for language support
     'neovim/nvim-lspconfig',
     dependencies = {
       'williamboman/mason.nvim',
@@ -211,6 +214,7 @@ return require('lazy').setup({
         vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
       end
 
+      -- Lua LS
       lspconfig.lua_ls.setup({
         on_attach = on_attach,
         settings = {
@@ -222,14 +226,17 @@ return require('lazy').setup({
         },
       })
 
+      -- Python ls (pyright)
       lspconfig.pyright.setup({
         on_attach = on_attach,
       })
 
+      -- Typescript ls
       lspconfig.ts_ls.setup({
         on_attach = on_attach,
       })
 
+      -- C/C++ ls (clangd)
       lspconfig.clangd.setup({
         on_attach = on_attach,
         cmd = {
@@ -238,10 +245,13 @@ return require('lazy').setup({
           "--clang-tidy",
         },
       })
+
+      -- See available language servers by going to
+      -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
     end
   },
 
-  {
+  { -- Cmp for autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
@@ -316,7 +326,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Treesitter for syntax highlighting
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
@@ -333,7 +343,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Wilder for wildmenu autocompletion
     "gelguy/wilder.nvim",
     lazy = false,
     config = function()
@@ -352,46 +362,44 @@ return require('lazy').setup({
     end,
   },
 
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-      vim.keymap.set('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', { desc = "Preview hunk" })
-      vim.keymap.set('n', '<leader>gn', ':Gitsigns next_hunk<CR>', { desc = "Next hunk" })
-      vim.keymap.set('n', '<leader>gp', ':Gitsigns prev_hunk<CR>', { desc = "Previous hunk" })
-    end
-  },
-
-  {
+  { -- Markdown highlighting
     'preservim/vim-markdown',
     ft = "markdown",
   },
 
-	{
+	{ -- Better escape for faster exiting insert mode (jj/jk)
 		"max397574/better-escape.nvim",
 		config = function()
 			require("better_escape").setup ()
 		end,
 	},
 
-  {
+  { -- Better commenting
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
   },
 
-  'tpope/vim-surround',
+	{ -- Pairing brackets/parens/quotes
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end
+	},
+
+  -- Bullets for creating bulleted lists
 	'dkarter/bullets.vim',
 
-  {
+  { -- Undo Tree
     'mbbill/undotree',
     config = function()
       vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
     end
   },
 
-	{
+	{ -- Vista for tag exploration
     'liuchengxu/vista.vim',
     config = function()
       vim.g.vista_default_executive = 'ctags'
@@ -400,7 +408,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Gutentags for code indexing
     'ludovicchabant/vim-gutentags',
     config = function()
       vim.g.gutentags_cache_dir = vim.fn.stdpath('data') .. '/tags'
@@ -408,7 +416,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Neoformat for code formatting
     'sbdchd/neoformat',
     config = function()
       vim.g.neoformat_enabled_python = {'black'}
@@ -418,7 +426,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Fugitive for git integration
     'tpope/vim-fugitive',
     config = function()
       vim.keymap.set('n', '<leader>gs', ':Git<CR>', { noremap = true, silent = true })
@@ -427,7 +435,7 @@ return require('lazy').setup({
     end
   },
 
-	{
+	{ -- Notify for GUI notifications
     "rcarriga/nvim-notify",
     config = function()
       local notify = require("notify")
@@ -442,7 +450,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Markdown preview (activated by ":MarkdownPreview" command)
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
     ft = { "markdown" },
@@ -451,7 +459,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- UFO with statuscol for folding
     'kevinhwang91/nvim-ufo',
     dependencies = {
       'kevinhwang91/promise-async',
@@ -514,7 +522,7 @@ return require('lazy').setup({
     end
   },
 
-  {
+  { -- Hop for faster navigation
     'phaazon/hop.nvim',
     branch = 'v2',
     config = function()
@@ -561,13 +569,13 @@ return require('lazy').setup({
     end
   },
 
-  {
+	{ -- Which-key for help with keybindings
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      
+
       local wk = require("which-key")
       wk.setup({
         plugins = {
@@ -596,86 +604,10 @@ return require('lazy').setup({
           spacing = 3,
           align = "center",
         },
-        filter = function(keymap)
+        filter = function()
           return true
         end,
         show_help = true,
-      })
-      
-      wk.add({
-        { "<leader>w", "<cmd>w<cr>", desc = "Save file" },
-        { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
-        { "<leader>wq", "<cmd>wq<cr>", desc = "Save and quit" },
-        { "<leader>z", "<cmd>undo<cr>", desc = "Undo" },
-        
-        { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle file explorer" },
-        
-        { "<leader>f", group = "Find" },
-        { "<leader>ff", function() require('telescope.builtin').find_files() end, desc = "Find files" },
-        { "<leader>fg", function() require('telescope.builtin').live_grep() end, desc = "Live grep" },
-        { "<leader>fb", function() require('telescope').extensions.file_browser.file_browser() end, desc = "File browser" },
-        { "<leader>fr", function() require('telescope.builtin').oldfiles() end, desc = "Recent files" },
-        
-        { "<leader>r", group = "LSP" },
-        { "<leader>rn", function() vim.lsp.buf.rename() end, desc = "Rename" },
-        { "<leader>c", group = "Code" },
-        { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code action" },
-        { "<leader>f", function() vim.lsp.buf.format { async = true } end, desc = "Format document" },
-        
-        { "<leader>g", group = "Git" },
-        { "<leader>gh", ":Gitsigns preview_hunk<CR>", desc = "Preview hunk" },
-        { "<leader>gn", ":Gitsigns next_hunk<CR>", desc = "Next hunk" },
-        { "<leader>gp", ":Gitsigns prev_hunk<CR>", desc = "Previous hunk" },
-        { "<leader>gs", ":Git<CR>", desc = "Git status" },
-        { "<leader>gc", ":Git commit<CR>", desc = "Git commit" },
-        { "<leader>gp", ":Git push<CR>", desc = "Git push" },
-        
-        { "<leader>u", function() vim.cmd.UndotreeToggle() end, desc = "Toggle Undotree" },
-        
-        { "<leader>v", ":Vista!!<CR>", desc = "Toggle Vista" },
-        
-        { "<leader>n", group = "Format" },
-        { "<leader>nf", ":Neoformat<CR>", desc = "Format with Neoformat" },
-        
-        { "<leader>h", group = "Hop" },
-        { "<leader>hw", function() require('hop').hint_words() end, desc = "Hop to word" },
-        { "<leader>hl", function() require('hop').hint_lines() end, desc = "Hop to line" },
-        { "<leader>hc", function() require('hop').hint_char1() end, desc = "Hop to character" },
-        { "<leader>hp", function() require('hop').hint_patterns() end, desc = "Hop to pattern" },
-      })
-      
-      wk.add({
-        { "<C-Tab>", ":BufferLineCycleNext<CR>", desc = "Next buffer" },
-        { "<C-S-Tab>", ":BufferLineCyclePrev<CR>", desc = "Previous buffer" },
-        { "<C-t>", ":", desc = "Command line" },
-        
-        { "gd", function() vim.lsp.buf.definition() end, desc = "Go to definition" },
-        { "gD", function() vim.lsp.buf.declaration() end, desc = "Go to declaration" },
-        { "K", function() vim.lsp.buf.hover() end, desc = "Show hover info" },
-        { "gi", function() vim.lsp.buf.implementation() end, desc = "Go to implementation" },
-        { "<C-k>", function() vim.lsp.buf.signature_help() end, desc = "Show signature help" },
-        
-        { "f", desc = "Hop forward to character (current line)" },
-        { "F", desc = "Hop backward to character (current line)" },
-        { "t", desc = "Hop forward to before character (current line)" },
-        { "T", desc = "Hop backward to after character (current line)" },
-        
-        { "zR", function() require('ufo').openAllFolds() end, desc = "Open all folds" },
-        { "zM", function() require('ufo').closeAllFolds() end, desc = "Close all folds" },
-        { "zr", function() require('ufo').openFoldsExceptKinds() end, desc = "Open folds except kinds" },
-        { "zm", function() require('ufo').closeFoldsWith() end, desc = "Close folds with" },
-        { "zK", desc = "Peek folded code" },
-      })
-  
-      wk.add({
-        mode = { "i" },
-        { "<C-k>", desc = "Select previous item" },
-        { "<C-j>", desc = "Select next item" },
-        { "<C-b>", desc = "Scroll docs up" },
-        { "<C-f>", desc = "Scroll docs down" },
-        { "<C-Space>", desc = "Complete" },
-        { "<C-e>", desc = "Abort" },
-        { "<CR>", desc = "Confirm selection" },
       })
     end
   }
