@@ -32,11 +32,11 @@ end, {
 
 map("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
     silent = true,
-    desc = "open init.lua",
+    desc = "Open init.lua",
 })
 
 -- Undo
-map('n', '<leader>z', '<cmd>undo<cr>', { desc = "Undo" })
+map('i', '<C-z>', '<cmd>undo<cr>', { desc = "Undo" })
 
 -- Deleting Without Yanking
 map('n', 'D', '"_D', { desc = "Delete to end of line without yanking" })
@@ -77,13 +77,13 @@ map("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "Last qf item" })
 -- Close location list or quickfix list if they are present
 map("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", { -- see https://superuser.com/q/355325/736190
   silent = true,
-  desc = "close qf and location list",
+  desc = "Close qf and location list",
 })
 
 -- Delete a buffer, without closing the window
 map("n", [[\d]], "<cmd>bprevious <bar> bdelete #<cr>", { -- see https://stackoverflow.com/q/4465095/6064933
   silent = true,
-  desc = "delete current buffer",
+  desc = "Delete current buffer",
 })
 
 map("n", [[\D]], function()
@@ -97,18 +97,18 @@ map("n", [[\D]], function()
     end
   end
 end, {
-  desc = "delete other buffers",
+  desc = "Delete other buffers",
 })
 
 -- Insert a blank line below or above current line (do not move the cursor),
 map("n", "<space>o", "printf('m`%so<ESC>``', v:count1)", { -- see https://stackoverflow.com/a/16136133/6064933
   expr = true,
-  desc = "insert line below",
+  desc = "Insert line below",
 })
 
 map("n", "<space>O", "printf('m`%sO<ESC>``', v:count1)", {
   expr = true,
-  desc = "insert line above",
+  desc = "Insert line above",
 })
 
 -- Move the cursor based on physical lines, not the actual lines.
