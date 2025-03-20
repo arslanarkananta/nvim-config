@@ -115,3 +115,18 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
 + Indentation guides via [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).  
 + Session persistence via [persistence.nvim](https://github.com/folke/persistence.nvim).  
 + Yank and put enhancements via [yanky.nvim](https://github.com/gbprod/yanky.nvim).
+
+## Contributing
+
+#### *Did you find a bug?*
++ Any issues regarding the config should be reported in [issues](https://github.com/arslanarkananta/nvim-config/issues). 
++ Make sure the bug was not already reported by searching in our issues page.
+
+#### *Did you write an improvement?*
+Please send a [GitHub Pull Request](https://github.com/arslanarkananta/nvim-config/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)). 
+Make sure all of your commits are atomic (one feature per commit). Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+``` cmd
+    $ git commit -m "A brief summary of the commit
+    > 
+    > A paragraph describing what changed and its impact."
+```
