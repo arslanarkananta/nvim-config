@@ -13,7 +13,7 @@
       <img src="https://img.shields.io/badge/Neovim-0.10.4-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a>
-      <img src="https://img.shields.io/github/languages/top/arslanarkananta/nvim-config" alt="Top languages"/>
+      <img src="./demoRes/screenshot.png" alt="Top languages"/>
     </a>
 </p>
 This repo contains my Neovim configuration for Linux, MacOS, and Windows.
@@ -57,10 +57,10 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
 <table>
     <tr>
         <td align="center"><strong>Start screen with alpha-nvim</strong><br>
-            <img src="https://github.com/user-attachments/assets/e3746f2e-66ea-47ed-88b9-f353bf6c75d8" width="400">
+            <img src="./demoRes/alpha.png" width="400">
         </td>
         <td align="center"><strong>Autocompletion using nvim-cmp</strong><br>
-            <img src="https://github.com/user-attachments/assets/692cafdd-9ed6-4950-bf2f-7f102f07896c" width="400">
+            <img src="./demoRes/autocompletion.gif" width="400">
         </td>
     </tr>
     <tr>
@@ -73,10 +73,10 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
     </tr>
     <tr>
         <td align="center"><strong>GUI notification using nvim-notify</strong><br>
-            <img src="https://github.com/user-attachments/assets/d1645fec-4e28-4cbd-ad77-8a4395d36d1c" width="400">
+            <img src="./demoRes/notify.gif" width="400">
         </td>
         <td align="center"><strong>Wildmenu autocompletion using wilder.nvim</strong><br>
-            <img src="https://github.com/user-attachments/assets/ecf8d254-89ed-4254-8d53-4e2a4caa48f4" width="400">
+            <img src="./demoRes/wilder.gif" width="400
         </td>
     </tr>
 </table>
@@ -113,5 +113,5 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
 + GUI notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify).  
 + Which-key popup for keybindings via [which-key.nvim](https://github.com/folke/which-key.nvim).  
 + Indentation guides via [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).  
-+ Session persistence via [persistence.nvim](https://github.com/folke/persistence.nvim).  
++ Session persistence via [persistence.nvim](https://github.com/folke/persistence.nvim). 
 + Yank and put enhancements via [yanky.nvim](https://github.com/gbprod/yanky.nvim).
