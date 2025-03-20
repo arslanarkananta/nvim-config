@@ -148,7 +148,7 @@ map("n", "cc", '"_cc')
 map("x", "c", '"_c')
 
 -- Remove Trailing Spaces
-map("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "Remove trailing spaces" })
+map("n", "<leader><space>", "<cmd>StripWhitespace<cr>", { desc = "Remove trailing spaces" })
 
 -- Yank Entire Buffer
 map("n", "<leader>y", "<cmd>%yank<cr>", { desc = "Yank entire buffer" })
@@ -206,35 +206,3 @@ map("i", "<C-A>", "<HOME>")
 map("i", "<C-E>", "<END>")
 map("c", "<C-A>", "<HOME>")
 map("i", "<C-D>", "<DEL>")
-
--- Cursor Blink
-map("n", "<leader>cb", function()
-  local cnt = 0
-  local blink_times = 7
-  local timer = uv.new_timer()
-  if timer == nil then
-    return
-  end
-
-  timer:start(
-    0,
-    100,
-    vim.schedule_wrap(function()
-      vim.cmd([[
-      set cursorcolumn!
-      set cursorline!
-    ]])
-      if cnt == blink_times then
-        timer:close()
-      end
-      cnt = cnt + 1
-    end)
-  )
-end, { desc = "Show cursor by blinking" })
-
--- Highlight on Yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank({ higroup="IncSearch", timeout=199 })
-    end,
-})
