@@ -65,10 +65,10 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
     </tr>
     <tr>
         <td align="center"><strong>Undotree, neo-tree.nvim, and vista.vim</strong><br>
-            <img src="https://github.com/user-attachments/assets/59bf7d68-946a-462d-a90b-54efc9389f51" width="400">
+            <img src="./demoRes/uishowcase.png" width="400">
         </td>
         <td align="center"><strong>Folding using nvim-ufo</strong><br>
-            <img src="https://github.com/user-attachments/assets/8decbac4-3cfe-490f-bb75-82aea5028073" width="400">
+            <img src="./demoRes/folding.png" width="400">
         </td>
     </tr>
     <tr>
@@ -76,7 +76,7 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
             <img src="./demoRes/notify.gif" width="400">
         </td>
         <td align="center"><strong>Wildmenu autocompletion using wilder.nvim</strong><br>
-            <img src="./demoRes/wilder.gif" width="400
+            <img src="./demoRes/wilder.gif" width="400">
         </td>
     </tr>
 </table>
@@ -113,5 +113,5 @@ git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
 + GUI notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify).  
 + Which-key popup for keybindings via [which-key.nvim](https://github.com/folke/which-key.nvim).  
 + Indentation guides via [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).  
-+ Session persistence via [persistence.nvim](https://github.com/folke/persistence.nvim). 
++ Session persistence via [persistence.nvim](https://github.com/folke/persistence.nvim).  
 + Yank and put enhancements via [yanky.nvim](https://github.com/gbprod/yanky.nvim).
