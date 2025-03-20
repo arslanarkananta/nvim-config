@@ -13,7 +13,7 @@
       <img src="https://img.shields.io/badge/Neovim-0.10.4-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a>
-      <img src="https://img.shields.io/github/languages/top/arslanarkananta/nvim-config" alt="Top languages"/>
+      <img src="./demoRes/screenshot.png" alt="Top languages"/>
     </a>
 </p>
 This repo contains my Neovim configuration for Linux, MacOS, and Windows.
@@ -44,60 +44,74 @@ git clone https://github.com/ttys3/nvim-config.git $HOME/.config/nvim
 git clone https://github.com/ttys3/nvim-config.git $HOME\AppData\Local\nvim
 ```
 
+## Requirements
+
+- Neovim v0.9+
+- Nerd fonts (optional)
+- Make & GCC/Clang
+- Yarn/npm
+- Ripgrep
+
+## Demonstration
+
+<table>
+    <tr>
+        <td align="center"><strong>Start screen with alpha-nvim</strong><br>
+            <img src="./demoRes/alpha.png" width="400">
+        </td>
+        <td align="center"><strong>Autocompletion using nvim-cmp</strong><br>
+            <img src="./demoRes/autocompletion.gif" width="400">
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><strong>Undotree, neo-tree.nvim, and vista.vim</strong><br>
+            <img src="./demoRes/uishowcase.png" width="400">
+        </td>
+        <td align="center"><strong>Folding using nvim-ufo</strong><br>
+            <img src="./demoRes/folding.png" width="400">
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><strong>GUI notification using nvim-notify</strong><br>
+            <img src="./demoRes/notify.gif" width="400">
+        </td>
+        <td align="center"><strong>Wildmenu autocompletion using wilder.nvim</strong><br>
+            <img src="./demoRes/wilder.gif" width="400">
+        </td>
+    </tr>
+</table>
+
+<p style="text-align: center; margin-top: 30px;">To see more demonstrations, check <a href="https://github.com/arslanarkananta/nvim-config/issues/7">here</a></p>
+
 ## Features
-+ Package management via [Lazy.nvim](https://github.com/folke/lazy.nvim).
-+ Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
-+ Code, word, and snippet auto-completion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
-+ Syntax highlighting and parsing via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).  
-+ Command-line completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).  
-+ File explorer and tree view via [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim).  
-+ Fuzzy finding and file searching via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
-+ Git integration, commands, and signs via [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) and [vim-fugitive](https://github.com/tpope/vim-fugitive).
-+ Markdown support and live preview via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
-+ Enhanced fold management and UI via [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) and [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim).
-+ Startup screen and notification system via [alpha-nvim](https://github.com/goolord/alpha-nvim).
-+ Notification system via [nvim-notify](https://github.com/rcarriga/nvim-notify).
-+ Buffer tabline and statusline customization via [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) and [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
-+ Tag viewer and automatic tag management via [vista.vim](https://github.com/liuchengxu/vista.vim) and [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags).
-+ Text manipulation and commenting via [vim-surround](https://github.com/tpope/vim-surround) and [Comment.nvim](https://github.com/numToStr/Comment.nvim).
-+ Bullet point management for lists via [bullets.vim](https://github.com/dkarter/bullets.vim)
-+ Faster navigation and key sequence escaping via [hop.nvim](https://github.com/phaazon/hop.nvim) and [better-escape.nvim](https://github.com/max397574/better-escape.nvim).
-+ Code formatting via [neoformat](https://github.com/sbdchd/neoformat). 
 
-<hr style="margin: 40px 0;">
-<p style="text-align: center;">To see more demonstrations, check <a href="https://github.com/arslanarkananta/nvim-config/issues/7">here</a></p>
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: center; text-align: center; margin-top: 40px;">
-
-<div style="text-align: center;">
-    <strong>Start screen with alpha-nvim</strong><br>
-    <img src="https://github.com/user-attachments/assets/e3746f2e-66ea-47ed-88b9-f353bf6c75d8" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Autocompletion using nvim-cmp</strong><br>
-    <img src="https://github.com/user-attachments/assets/692cafdd-9ed6-4950-bf2f-7f102f07896c" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Undotree, neo-tree.nvim, and vista.vim</strong><br>
-    <img src="https://github.com/user-attachments/assets/59bf7d68-946a-462d-a90b-54efc9389f51" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Folding using nvim-ufo</strong><br>
-    <img src="https://github.com/user-attachments/assets/8decbac4-3cfe-490f-bb75-82aea5028073" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>GUI notification using nvim-notify</strong><br>
-    <img src="https://github.com/user-attachments/assets/d1645fec-4e28-4cbd-ad77-8a4395d36d1c" width="400">
-</div>
-
-<div style="text-align: center;">
-    <strong>Wildmenu autocompletion using wilder.nvim</strong><br>
-    <img src="https://github.com/user-attachments/assets/ecf8d254-89ed-4254-8d53-4e2a4caa48f4" width="400">
-</div>
-
-</div>
-
-
++ Package management via [Lazy.nvim](https://github.com/folke/lazy.nvim).  
++ Git integration, commands, and signs via [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) and [vim-fugitive](https://github.com/tpope/vim-fugitive).  
++ Statusline via [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).  
++ Tabs and buffers management via [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).  
++ File explorer via [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim).  
++ Startup screen via [alpha-nvim](https://github.com/goolord/alpha-nvim).  
++ Fuzzy finder via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) and [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim).  
++ Language Server Protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [mason.nvim](https://github.com/williamboman/mason.nvim).  
++ Autocompletion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp), [cmp-buffer](https://github.com/hrsh7th/cmp-buffer), and [cmp-path](https://github.com/hrsh7th/cmp-path).  
++ Snippet support via [ultisnips](https://github.com/SirVer/ultisnips) (preferred) and [friendly-snippets](https://github.com/rafamadriz/friendly-snippets).  
++ Syntax highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).  
++ Auto pairs for brackets, parentheses, and quotes via [nvim-autopairs](https://github.com/windwp/nvim-autopairs).  
++ Enhanced commenting via [Comment.nvim](https://github.com/numToStr/Comment.nvim).  
++ Better escape from insert mode via [better-escape.nvim](https://github.com/max397574/better-escape.nvim).  
++ Tag explorer via [vista.vim](https://github.com/liuchengxu/vista.vim).  
++ Code indexing via [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags).  
++ Code formatting via [conform.nvim](https://github.com/stevearc/conform.nvim).  
++ Undo history via [undotree](https://github.com/mbbill/undotree).  
++ Folding enhancements via [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo).  
++ Better navigation via [hop.nvim](https://github.com/phaazon/hop.nvim).  
++ Better wildmenu completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).  
++ Whitespace management via [vim-better-whitespace](https://github.com/ntpeters/vim-better-whitespace).  
++ Markdown support via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).  
++ TODO highlighting via [todo-comments.nvim](https://github.com/folke/todo-comments.nvim).  
++ Bulleted lists support via [bullets.vim](https://github.com/dkarter/bullets.vim).  
++ GUI notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify).  
++ Which-key popup for keybindings via [which-key.nvim](https://github.com/folke/which-key.nvim).  
++ Indentation guides via [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).  
++ Session persistence via [persistence.nvim](https://github.com/folke/persistence.nvim).  
++ Yank and put enhancements via [yanky.nvim](https://github.com/gbprod/yanky.nvim).
