@@ -13,7 +13,7 @@
       <img src="https://img.shields.io/badge/Neovim-0.10.4-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a>
-      <img src="./demoRes/screenshot.png" alt="Top languages"/>
+      <img src="https://img.shields.io/github/languages/top/arslanarkananta/nvim-config" alt="Top languages"/>
     </a>
 </p>
 This repo contains my Neovim configuration for Linux, MacOS, and Windows.
